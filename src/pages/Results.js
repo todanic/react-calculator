@@ -1,36 +1,57 @@
 import React from 'react';
-import { useSharedState } from '../context/TabContext';
+import { useSharedState } from '../context/Context';
+import Layout from '../Layouts/Layout';
 
 export default function Results() {
   const { income, frequency, calculationType } = useSharedState();
-  const columns = ['freaguancy', 'gross income', 'tax', 'net income'];
 
-  const generateTaxes = () => {
-    return Array.from({ length: 4 }, () => Math.floor(Math.random() * (50000 - 1000 + 1)) + 1000);
-  };
+  const columns = [
+    { id: 0, name: 'freaguancy' },
+    { id: 1, name: 'gross income' },
+    { id: 2, name: 'tax' },
+    { id: 3, name: 'net income' }
+  ];
+  const rows = [
+    { id: 0, name: 'weekly', tax: 1000 },
+    { id: 1, name: 'fortnighly', tax: 2000 },
+    { id: 2, name: 'monthly', tax: 4000 },
+    { id: 3, name: 'annually', tax: 48000 }
+  ];
 
-  const taxes = generateTaxes();
-
+  const calculateIncome = () => {};
   return (
-    <div>
-      <h2>Results</h2>
-      <table>
-        <thead>
+    <Layout>
+      <h2>
+        Your {frequency} {calculationType === 'gross' ? 'net' : 'gross'} income is{' '}
+      </h2>
+      <table className="w-full mt-10">
+        <thead className="bg-gray-50 dark:bg-primary text-left">
           <tr>
             {columns.map((column) => (
-              <th key={column}>{column}</th>
+              <th
+                className="capitalize p-5 text-gray-900 dark:text-primary font-bold tracking-2 text-lg"
+                key={column.id}>
+                {column.name}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="border-r border-gray-300">{frequency}</td>
-            <td className="border-r border-gray-300">{income}</td>
-            <td className="border-r border-gray-300">{taxes.join(', ')}</td>
-            <td className="border-r border-gray-300">Net Income Calculation</td>
-          </tr>
+          {rows.map((row) => {
+            const grossIncome = row.name === 'annually' ? income - row.tax : income;
+            const netIncome = income - row.tax;
+
+            return (
+              <tr key={row.id} className="odd:bg-gray-50 dark:odd:bg-primary">
+                <td className="p-5">{row.name}</td>
+                <td className="p-5">{grossIncome}</td>
+                <td className="p-5">{row.tax}</td>
+                <td className="p-5">{netIncome}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
-    </div>
+    </Layout>
   );
 }

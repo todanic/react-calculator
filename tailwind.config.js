@@ -5,15 +5,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#ff8c00' // Define your neon green color
+        primary: '#FF6D2B',
+        hover: '#ff6a00'
       },
       dark: {
         bg: '#1A202C',
         text: '#fff'
         // Define your other dark mode colors
       },
-      fontFamily: {
-        poppins: ['Poppins', 'Arial', 'sans-serif']
+      boxShadow: {
+        glow: '0 0 10px #ff8c00, inset 0 0 10px #ff8c00'
+      },
+      letterSpacing: {
+        2: '2px'
       }
     }
   },

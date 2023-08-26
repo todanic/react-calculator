@@ -3,9 +3,9 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 const Header = () => {
   return (
-    <header className="bg-white dark:bg-gray-900 p-4">
-      <nav className="flex items-center justify-between">
-        <ThemeSwitcher />;
+    <header className="bg-transparent p-4">
+      <nav className="flex items-center justify-end">
+        <ThemeSwitcher />
       </nav>
     </header>
   );

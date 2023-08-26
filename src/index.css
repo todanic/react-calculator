@@ -8,7 +8,39 @@
     local('Poppins'),
     url(./assets/fonts/Poppins/Poppins-Regular.ttf) format('opentype');
 }
-
 body {
   font-family: Poppins, Arial, serif;
+  transition: all 0.3s ease-in-out;
+}
+body.dark {
+  --tw-bg-opacity: 1;
+  background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
+}
+
+.checkbox-wrapper-54 input:checked + .slider:before {
+  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+  background: #303136;
+  box-shadow:
+    inset -3px -2px 5px -2px #8983f7,
+    inset -10px -4px 0 0 #a3dafb;
+}
+.checkbox-wrapper-54 .slider:before {
+  position: absolute;
+  content: '';
+  height: var(--size-of-icon, 1.4em);
+  width: var(--size-of-icon, 1.4em);
+  border-radius: 20px;
+  left: var(--slider-offset, 0.3em);
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
+  transition: 0.4s;
+}
+
+.checkbox-wrapper-54 input[type='checkbox'] {
+  visibility: hidden;
+  display: none;
+}
+.checkbox-wrapper-54 input:checked + .slider {
+  background-color: #303136;
 }

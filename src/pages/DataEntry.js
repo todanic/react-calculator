@@ -1,8 +1,6 @@
 import React from 'react';
-import InputField from '../components/InputField';
-import Dropdown from '../components/Dropdown';
-import Checkbox from '../components/Checkbox';
 import Layout from '../Layouts/Layout';
+import Form from '../components/Form';
 
 export default function DataEntry() {
   const frequencyValues = ['annually', 'weekly', 'monthly', 'fortnighly'];
@@ -11,9 +9,12 @@ export default function DataEntry() {
   return (
     <>
       <Layout>
-        <InputField />
-        <Dropdown values={frequencyValues} />
-        <Checkbox label="Choose income type" values={calculationTypeValues} />
+        <Form
+          dropdownValues={frequencyValues}
+          dropdownLabel="Frequency"
+          checkboxValues={calculationTypeValues}
+          checkboxLabel="Choose income type"
+        />
       </Layout>
     </>
   );

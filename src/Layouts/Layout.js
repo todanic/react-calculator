@@ -7,8 +7,10 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center bg-gray-100">
-        <main className="max-w-3xl w-full p-4">{children}</main>
+      <div className="flex flex-col items-center justify-center">
+        <main className="bg-transparent w-full">
+          <div className="w-full p-4 max-w-screen-lg mx-auto">{children}</div>
+        </main>
       </div>
       <Footer />
     </>
