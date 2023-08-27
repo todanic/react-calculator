@@ -3,8 +3,16 @@ import Layout from '../Layouts/Layout';
 import Form from '../components/Form';
 
 export default function DataEntry() {
-  const frequencyValues = ['annually', 'weekly', 'monthly', 'fortnighly'];
-  const calculationTypeValues = ['net', 'gross'];
+  const frequencyValues = [
+    { id: 0, value: 'annually' },
+    { id: 1, value: 'weekly' },
+    { id: 2, value: 'monthly' },
+    { id: 3, value: 'fortnightly' }
+  ];
+  const calculationTypeValues = [
+    { id: 0, value: 'gross', label: 'gross' },
+    { id: 1, value: 'net', label: 'net' }
+  ];
 
   return (
     <>
@@ -12,8 +20,9 @@ export default function DataEntry() {
         <Form
           dropdownValues={frequencyValues}
           dropdownLabel="Frequency"
-          checkboxValues={calculationTypeValues}
-          checkboxLabel="Choose income type"
+          radioOptions={calculationTypeValues}
+          radioLabel="Choose income type"
+          inputLabel="Income:"
         />
       </Layout>
     </>

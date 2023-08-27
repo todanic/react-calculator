@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import DataEntry from '../pages/DataEntry';
 import Results from '../pages/Results';
 import { TabContextProvider } from '../context/Context';
@@ -7,10 +7,14 @@ import { TabContextProvider } from '../context/Context';
 export default function TabNavigation() {
   return (
     <TabContextProvider>
-      <Routes>
-        <Route path="/" element={<DataEntry />} />
-        <Route path="/results" element={<Results />} />
-      </Routes>
+      <Switch>
+        <Route exact path="/">
+          <DataEntry />
+        </Route>
+        <Route path="/results">
+          <Results />
+        </Route>
+      </Switch>
     </TabContextProvider>
   );
 }

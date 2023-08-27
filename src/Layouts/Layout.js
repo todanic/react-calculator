@@ -1,4 +1,3 @@
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import React from 'react';
 
@@ -12,7 +11,6 @@ const Layout = ({ children }) => {
           <div className="w-full p-4 max-w-screen-lg mx-auto">{children}</div>
         </main>
       </div>
-      <Footer />
     </>
   );
 };

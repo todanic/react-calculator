@@ -18,7 +18,6 @@ export default function Results() {
     { id: 3, name: 'annually', tax: 48000 }
   ];
 
-  const calculateIncome = () => {};
   return (
     <Layout>
       <h2>

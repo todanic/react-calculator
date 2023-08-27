@@ -44,3 +44,72 @@ body.dark {
 .checkbox-wrapper-54 input:checked + .slider {
   background-color: #303136;
 }
+
+button {
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown__button {
+  padding: 1rem 2rem;
+  background-color: #343a40;
+  border-radius: 0.5rem;
+  border: solid 1px #495057;
+}
+
+.dropdown__button i {
+  margin-left: 1rem;
+}
+
+.dropdown__button:hover {
+  background-color: #495057;
+}
+
+.dropdown__items {
+  background-color: #343a40;
+  border: solid 1px #495057;
+  position: absolute;
+  margin-top: 0.5rem;
+  left: 0;
+  width: 200px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  animation: open 0.3s;
+  transform-origin: top left;
+}
+
+.dropdown__item {
+  width: 100%;
+  text-align: left;
+  padding: 1rem;
+}
+
+.dropdown__item:hover {
+  background-color: #495057;
+  border-radius: 0.5rem;
+}
+
+.dropdown--hide {
+  display: none;
+}
+
+.dropdown--show {
+  display: block;
+}
+
+@keyframes open {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}

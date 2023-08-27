@@ -14,7 +14,8 @@ module.exports = {
         // Define your other dark mode colors
       },
       boxShadow: {
-        glow: '0 0 10px #ff8c00, inset 0 0 10px #ff8c00'
+        light: 'rgba(50, 50, 93, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.3) 0px 10px 10px',
+        dark: 'rgba(255, 109, 43, 0.25) 0px 10px 50px;'
       },
       letterSpacing: {
         2: '2px'

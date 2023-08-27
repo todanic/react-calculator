@@ -5,7 +5,9 @@
     "react/react-in-jsx-scope": "off"
   },
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    //Remove optional chaining linting error
+    "ecmaVersion": 2020
   },
   "env": {
     "browser": true,
