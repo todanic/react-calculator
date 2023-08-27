@@ -17,22 +17,29 @@ export default function Form(props) {
 
   const handleInputChange = (value) => {
     setInputValue(value);
-    setIncome(value);
   };
 
   const handleOptionChange = (value) => {
     setSelectedOption(value);
-    setFrequency(value);
   };
 
   const handleRadioGroupChange = (value) => {
     setselectedRadioOption(value);
-    setCalculationType(value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/results');
+    const isValidInput = !isNaN(inputValue) && parseInt(inputValue) >= 1;
+
+    if (isValidInput) {
+      setIncome(inputValue);
+      setFrequency(selectedOption);
+      setCalculationType(selectedRadioOption);
+      history.push('/results');
+    } else {
+      // Show error message or provide feedback to the user
+      alert('Invalid input. Please enter a valid number greater than or equal to 1.');
+    }
   };
   return (
     <form
@@ -61,7 +68,7 @@ export default function Form(props) {
         />
         <button
           type="submit"
-          className="w-full mt-10 text-2x1 transition-all duration-300 hover:opacity-70 ease-in-out uppercase tracking-2 dark:hover:bg-white  bg-gradient-to-t  from-gray-900 to-gray-700 dark:from-red-600 dark:to-hover dark:bg-primary text-white py-2 px-4 rounded-lg hover:bg-hover focus:outline-none ">
+          className="shadow-light w-full mt-12 text-2x1 transition-all duration-300 hover:opacity-70 ease-in-out uppercase tracking-2 dark:hover:bg-white  bg-gradient-to-t  from-gray-900 to-gray-700 dark:from-red-600 dark:to-hover dark:bg-primary text-white py-3 px-4 rounded-lg hover:bg-hover  ">
           Calculate
         </button>
       </div>

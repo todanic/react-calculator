@@ -5,7 +5,7 @@ export default function Input(props) {
   const { value, onChange, label } = props;
   return (
     <div>
-      <label className="text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md mb-3 block">
+      <label className="capitalize text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md mb-3 block">
         {label}
       </label>
       <input

@@ -59,12 +59,12 @@ export default function Dropdown(props) {
   return (
     <div>
       <label
-        className="mb-3 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
+        className="capitalize mb-3 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
         htmlFor="frequency">
         {label}
       </label>
       <div
-        className="relative inline-block w-full text-gray-900 text-md"
+        className="relative inline-block w-full text-gray-900 text-md rounded-lg"
         tabIndex={0}
         onKeyDown={handleKeyDown}
         aria-expanded={isActive}
@@ -92,7 +92,7 @@ export default function Dropdown(props) {
                 onChange(value.value); // Call the onChange prop with the selected value
                 setIsActive(false); // Close the dropdown
               }}
-              className="focus:outline-none transition-all duration-300 ease-in-out item px-4 py-3 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white capitalize dark:hover:bg-primary dark:text-gray-900 dark:hover:text-white">
+              className="focus:outline-none dark:focus:text-white transition-all duration-300 ease-in-out item px-4 py-3 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white dark:focus:bg-primary capitalize dark:hover:bg-primary dark:text-gray-900 dark:hover:text-white">
               {value.value}
             </li>
           ))}
