@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "clean-build": "rimraf dist && mkdir dist && webpack --mode=production",
-    "start": "webpack serve",
+    "clean-build": "rimraf dist && mkdir dist && webpack --config webpack.prod.js",
+    "start": "webpack serve --open --config webpack.dev.js",
     "predeploy": "yarn clean-build",
     "deploy": "gh-pages -d dist -r git@github.com:todanic/react-calculator.git",
     "lint": "eslint .",

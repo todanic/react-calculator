@@ -1,12 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   entry: './src/index.js',
-  output: {
-    filename: '[name][fullhash].js'
-  },
-  devtool: 'inline-source-map',
   //Seperate vendor js from index.js
   optimization: {
     splitChunks: {
@@ -36,12 +31,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     })
-  ],
-  devServer: {
-    host: 'localhost',
-    port: '3000',
-    historyApiFallback: true,
-    open: true,
-    hot: true
-  }
+  ]
 };
