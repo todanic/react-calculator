@@ -7,10 +7,20 @@ export const TabContextProvider = ({ children }) => {
   const [income, setIncome] = useState('');
   const [frequency, setFrequency] = useState('monthly');
   const [calculationType, setCalculationType] = useState('net');
+  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <TabContext.Provider
-      value={{ income, setIncome, frequency, setFrequency, calculationType, setCalculationType }}>
+      value={{
+        income,
+        setIncome,
+        frequency,
+        setFrequency,
+        calculationType,
+        setCalculationType,
+        darkMode,
+        setDarkMode
+      }}>
       {children}
     </TabContext.Provider>
   );

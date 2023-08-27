@@ -59,12 +59,12 @@ export default function Dropdown(props) {
   return (
     <div>
       <label
-        className="mb-3 mt-6 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-lg"
+        className="mb-3 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
         htmlFor="frequency">
         {label}
       </label>
       <div
-        className="relative inline-block w-full text-gray-900 text-lg"
+        className="relative inline-block w-full text-gray-900 text-md"
         tabIndex={0}
         onKeyDown={handleKeyDown}
         aria-expanded={isActive}
@@ -73,7 +73,7 @@ export default function Dropdown(props) {
           onClick={() => {
             setIsActive(!isActive);
           }}
-          className="capitalize bg-gray-50 border border-gray-400 p-3 rounded-lg cursor-pointer flex justify-between items-center">
+          className="capitalize shadow-lg bg-gray-50 border border-gray-400 p-3 rounded-lg cursor-pointer flex justify-between items-center h-10">
           {selectedOption}
           <span className={isActive ? 'fas fa-caret-up' : 'fas fa-caret-down'} />
         </div>
@@ -82,7 +82,7 @@ export default function Dropdown(props) {
           tabIndex={0}
           className={`dropdown-content ${
             isActive ? 'block' : 'hidden'
-          } absolute top-12 left-0 w-full shadow-md bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500`}>
+          } absolute top-10 left-0 w-full shadow-md bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500`}>
           {options.map((value) => (
             <li
               tabIndex={0}

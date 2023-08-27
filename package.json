@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "prod": "webpack --mode=production",
-    "dev": "webpack serve",
-    "predeploy": "npm run prod",
+    "clean-build": "rimraf dist && mkdir dist && webpack --mode=production",
+    "start": "webpack serve",
+    "predeploy": "yarn clean-build",
     "deploy": "gh-pages -d dist -r git@github.com:todanic/react-calculator.git",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
@@ -17,7 +17,6 @@
     "css-loader": "^6.8.1",
     "eslint-plugin-react": "^7.33.2",
     "html-webpack-plugin": "^5.5.3",
-    "install": "^0.13.0",
     "postcss-loader": "^7.3.3",
     "postcss-preset-env": "^9.1.1",
     "prop-types": "^15.8.1",
@@ -37,6 +36,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "gh-pages": "^6.0.0",
     "prettier": "^3.0.2",
+    "rimraf": "^5.0.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"

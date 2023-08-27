@@ -17,99 +17,30 @@ body.dark {
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
 }
 
-.checkbox-wrapper-54 input:checked + .slider:before {
-  left: calc(100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em)));
+.theme-switcher input:checked + .slider:before {
+  left: calc(100% - (1.4em + 0.3em));
   background: #303136;
   box-shadow:
     inset -3px -2px 5px -2px #8983f7,
     inset -10px -4px 0 0 #a3dafb;
 }
-.checkbox-wrapper-54 .slider:before {
+.theme-switcher .slider:before {
   position: absolute;
   content: '';
-  height: var(--size-of-icon, 1.4em);
-  width: var(--size-of-icon, 1.4em);
+  height: 1.4em;
+  width: 1.4em;
   border-radius: 20px;
-  left: var(--slider-offset, 0.3em);
+  left: 0.3em;
   top: 50%;
   transform: translateY(-50%);
   background: linear-gradient(40deg, #ff0080, #ff8c00 70%);
   transition: 0.4s;
 }
 
-.checkbox-wrapper-54 input[type='checkbox'] {
+.theme-switcher input[type='checkbox'] {
   visibility: hidden;
   display: none;
 }
-.checkbox-wrapper-54 input:checked + .slider {
+.theme-switcher input:checked + .slider {
   background-color: #303136;
-}
-
-button {
-  border: none;
-  background: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown__button {
-  padding: 1rem 2rem;
-  background-color: #343a40;
-  border-radius: 0.5rem;
-  border: solid 1px #495057;
-}
-
-.dropdown__button i {
-  margin-left: 1rem;
-}
-
-.dropdown__button:hover {
-  background-color: #495057;
-}
-
-.dropdown__items {
-  background-color: #343a40;
-  border: solid 1px #495057;
-  position: absolute;
-  margin-top: 0.5rem;
-  left: 0;
-  width: 200px;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  animation: open 0.3s;
-  transform-origin: top left;
-}
-
-.dropdown__item {
-  width: 100%;
-  text-align: left;
-  padding: 1rem;
-}
-
-.dropdown__item:hover {
-  background-color: #495057;
-  border-radius: 0.5rem;
-}
-
-.dropdown--hide {
-  display: none;
-}
-
-.dropdown--show {
-  display: block;
-}
-
-@keyframes open {
-  from {
-    transform: scaleY(0);
-  }
-
-  to {
-    transform: scaleY(1);
-  }
 }

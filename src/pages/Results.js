@@ -23,12 +23,12 @@ export default function Results() {
       <h2>
         Your {frequency} {calculationType === 'gross' ? 'net' : 'gross'} income is{' '}
       </h2>
-      <table className="w-full mt-10">
-        <thead className="bg-gray-50 dark:bg-primary text-left">
+      <table className="w-full mt-10 shadow-light dark:shadow-dark">
+        <thead className="bg-gray-50  text-left">
           <tr>
             {columns.map((column) => (
               <th
-                className="capitalize p-5 text-gray-900 dark:text-primary font-bold tracking-2 text-lg"
+                className="capitalize p-6 text-gray-900 dark:text-primary dark:bg-gray-900 font-bold tracking-2 text-lg"
                 key={column.id}>
                 {column.name}
               </th>
@@ -41,11 +41,13 @@ export default function Results() {
             const netIncome = income - row.tax;
 
             return (
-              <tr key={row.id} className="odd:bg-gray-50 dark:odd:bg-primary">
-                <td className="p-5">{row.name}</td>
-                <td className="p-5">{grossIncome}</td>
-                <td className="p-5">{row.tax}</td>
-                <td className="p-5">{netIncome}</td>
+              <tr
+                key={row.id}
+                className="tracking-2 odd:bg-gray-900 dark:odd:bg-white dark:odd:text-gray-900  odd:text-white dark:text-white capitalize">
+                <td className="p-6 dark:text-primary font-bold">{row.name}</td>
+                <td className="p-6">{grossIncome}</td>
+                <td className="p-6">{row.tax}</td>
+                <td className="p-6">{netIncome}</td>
               </tr>
             );
           })}

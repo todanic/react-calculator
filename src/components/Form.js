@@ -40,15 +40,22 @@ export default function Form(props) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="shadow-light dark:shadow-dark max-w-2xl mx-auto  dark:border-primary rounded-lg p-12">
+      className="shadow-light dark:shadow-dark max-full  dark:border-primary rounded-lg p-12">
       <div>
-        <Input value={inputValue} onChange={handleInputChange} label={inputLabel} />
-        <Dropdown
-          selectedOption={selectedOption}
-          options={dropdownValues}
-          label={dropdownLabel}
-          onChange={handleOptionChange}
-        />
+        <div className="flex items-start">
+          <div className="w-[70%] pr-2">
+            <Input value={inputValue} onChange={handleInputChange} label={inputLabel} />
+          </div>
+          <div className="w-[30%] pl-2">
+            <Dropdown
+              selectedOption={selectedOption}
+              options={dropdownValues}
+              label={dropdownLabel}
+              onChange={handleOptionChange}
+            />
+          </div>
+        </div>
+
         <RadioGroup
           options={radioOptions}
           label={radioLabel}
