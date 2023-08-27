@@ -4,7 +4,7 @@ import DataEntry from '../pages/DataEntry';
 import Results from '../pages/Results';
 import { TabContextProvider } from '../context/Context';
 
-export default function TabNavigation() {
+export default function Navigation() {
   return (
     <TabContextProvider>
       <Switch>

@@ -8,11 +8,12 @@ import RadioGroup from './RadioGroup';
 
 export default function Form(props) {
   const { dropdownValues, dropdownLabel, radioOptions, radioLabel, inputLabel } = props;
-  const { setIncome, setFrequency, setCalculationType } = useSharedState();
+  const { income, frequency, calculationType, setIncome, setFrequency, setCalculationType } =
+    useSharedState();
   const history = useHistory();
-  const [inputValue, setInputValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState(dropdownValues[0].value);
-  const [selectedRadioOption, setselectedRadioOption] = useState(radioOptions[0].value);
+  const [inputValue, setInputValue] = useState(income);
+  const [selectedOption, setSelectedOption] = useState(frequency);
+  const [selectedRadioOption, setselectedRadioOption] = useState(calculationType);
 
   const handleInputChange = (value) => {
     setInputValue(value);
@@ -31,11 +32,7 @@ export default function Form(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/results', {
-      inputValue: inputValue,
-      selectedOption: selectedOption,
-      selectedRadioOption: selectedRadioOption
-    });
+    history.push('/results');
   };
   return (
     <form

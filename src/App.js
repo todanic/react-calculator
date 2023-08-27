@@ -1,8 +1,8 @@
 import React from 'react';
-import TabNavigation from './components/TabNavigation';
+import Navigation from './components/Navigation';
 
 function App() {
-  return <TabNavigation />;
+  return <Navigation />;
 }
 
 export default App;

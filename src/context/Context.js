@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
-
+import PropTypes from 'prop-types';
 const TabContext = createContext('');
 
-// eslint-disable-next-line react/prop-types
 export const TabContextProvider = ({ children }) => {
   const [income, setIncome] = useState('');
   const [frequency, setFrequency] = useState('monthly');
@@ -28,4 +27,7 @@ export const TabContextProvider = ({ children }) => {
 
 export const useSharedState = () => {
   return useContext(TabContext);
+};
+TabContextProvider.propTypes = {
+  children: PropTypes.node.isRequired
 };
