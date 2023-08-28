@@ -19,9 +19,9 @@ export default function DataEntry() {
       <Layout>
         <Form
           dropdownValues={frequencyValues}
-          dropdownLabel="periodic pay"
+          dropdownLabel="periodic pay:"
           radioOptions={calculationTypeValues}
-          radioLabel="Choose income type"
+          radioLabel="choose income type:"
           inputLabel="income:"
         />
       </Layout>

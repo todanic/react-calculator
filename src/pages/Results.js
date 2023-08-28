@@ -7,9 +7,9 @@ export default function Results() {
 
   const columns = [
     { id: 0, name: 'freaguancy' },
-    { id: 1, name: 'gross income' },
+    { id: 1, name: 'gross' },
     { id: 2, name: 'tax' },
-    { id: 3, name: 'net income' }
+    { id: 3, name: 'net' }
   ];
   const rows = [
     { id: 0, name: 'weekly', tax: 1000 },

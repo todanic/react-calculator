@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import Input from './Input';
 import RadioGroup from './RadioGroup';
+import { FaArrowRight } from 'react-icons/fa';
 
 export default function Form(props) {
   const { dropdownValues, dropdownLabel, radioOptions, radioLabel, inputLabel } = props;
@@ -29,17 +30,11 @@ export default function Form(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isValidInput = !isNaN(inputValue) && parseInt(inputValue) >= 1;
 
-    if (isValidInput) {
-      setIncome(inputValue);
-      setFrequency(selectedOption);
-      setCalculationType(selectedRadioOption);
-      history.push('/results');
-    } else {
-      // Show error message or provide feedback to the user
-      alert('Invalid input. Please enter a valid number greater than or equal to 1.');
-    }
+    setIncome(inputValue);
+    setFrequency(selectedOption);
+    setCalculationType(selectedRadioOption);
+    history.push('/results');
   };
   return (
     <form
@@ -59,7 +54,6 @@ export default function Form(props) {
             />
           </div>
         </div>
-
         <RadioGroup
           options={radioOptions}
           label={radioLabel}
@@ -68,8 +62,9 @@ export default function Form(props) {
         />
         <button
           type="submit"
-          className="shadow-light w-full mt-12 text-2x1 transition-all duration-300 hover:opacity-70 ease-in-out uppercase tracking-2 dark:hover:bg-white  bg-gradient-to-t  from-gray-900 to-gray-700 dark:from-red-600 dark:to-hover dark:bg-primary text-white py-3 px-4 rounded-lg hover:bg-hover  ">
+          className="relative flex items-center justify-center shadow-light w-full mt-12 text-lg transition-all duration-300 ease-in-out uppercase tracking-2 dark:hover:bg-white  bg-gradient-to-t  from-gray-900 to-gray-700 dark:from-red-600 dark:to-hover dark:bg-primary text-white py-3 px-4 rounded-lg hover:bg-hover">
           Calculate
+          <FaArrowRight className="ml-10 hover:ml-14 before:content-normal" style={{}} />
         </button>
       </div>
     </form>

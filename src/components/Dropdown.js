@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { FaArrowDown } from 'react-icons/fa';
 
 export default function Dropdown(props) {
   const { options, label, selectedOption, onChange } = props;
@@ -59,7 +60,7 @@ export default function Dropdown(props) {
   return (
     <div>
       <label
-        className="capitalize mb-3 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
+        className="capitalize mb-5 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
         htmlFor="frequency">
         {label}
       </label>
@@ -73,16 +74,22 @@ export default function Dropdown(props) {
           onClick={() => {
             setIsActive(!isActive);
           }}
-          className="capitalize shadow-lg bg-gray-50 border border-gray-400 p-3 rounded-lg cursor-pointer flex justify-between items-center h-10">
+          className="capitalize shadow-elements bg-gray-50 border border-gray-400 p-3 rounded-lg cursor-pointer flex justify-between items-center h-10">
           {selectedOption}
           <span className={isActive ? 'fas fa-caret-up' : 'fas fa-caret-down'} />
+          <FaArrowDown
+            className={`transition-all duration-300 ease-in-out ml-2 text-sm ${
+              isActive ? 'transform rotate-180' : 'transform-none'
+            }`}
+          />{' '}
+          {/* Add the icon here */}
         </div>
         <ul
           ref={listRef}
           tabIndex={0}
           className={`dropdown-content ${
             isActive ? 'block' : 'hidden'
-          } absolute top-10 left-0 w-full shadow-md bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500`}>
+          } absolute top-10 left-0 w-full  bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500`}>
           {options.map((value) => (
             <li
               tabIndex={0}
