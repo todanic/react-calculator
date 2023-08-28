@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FaArrowDown } from 'react-icons/fa';
+import { dropdownOptions, dropdownLabel } from '../const';
 
 export default function Dropdown(props) {
-  const { options, label, selectedOption, onChange } = props;
+  const { selectedOption, onChange } = props;
   const [isActive, setIsActive] = useState(false);
   const listRef = useRef(null);
 
@@ -12,7 +13,6 @@ export default function Dropdown(props) {
     if (isActive) {
       listRef.current?.querySelector(`li[data-value="${selectedOption}"]`).focus();
     }
-
     isActive
       ? document.addEventListener('mousedown', handleClickOutside)
       : document.removeEventListener('mousedown', handleClickOutside);
@@ -36,12 +36,13 @@ export default function Dropdown(props) {
     // Handle arrow key navigation within the dropdown
     if (isActive && ['ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
-      const currentIndex = options.findIndex((option) => option.value === selectedOption);
+      const currentIndex = dropdownOptions.findIndex((option) => option.value === selectedOption);
 
       const newIndex =
-        (currentIndex + (e.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
+        (currentIndex + (e.key === 'ArrowDown' ? 1 : -1) + dropdownOptions.length) %
+        dropdownOptions.length;
 
-      const newSelectedValue = options[newIndex].value;
+      const newSelectedValue = dropdownOptions[newIndex].value;
       onChange(newSelectedValue);
 
       // Focus on the newly selected list item
@@ -57,19 +58,20 @@ export default function Dropdown(props) {
       setIsActive(false);
     }
   };
+
   return (
     <div>
       <label
         className="capitalize mb-5 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
         htmlFor="frequency">
-        {label}
+        {dropdownLabel}
       </label>
       <div
         className="relative inline-block w-full text-gray-900 text-md rounded-lg"
         tabIndex={0}
         onKeyDown={handleKeyDown}
         aria-expanded={isActive}
-        aria-labelledby={`dropdown-label-${label}`}>
+        aria-labelledby={`dropdown-label-${dropdownLabel}`}>
         <div
           onClick={() => {
             setIsActive(!isActive);
@@ -81,8 +83,7 @@ export default function Dropdown(props) {
             className={`transition-all duration-300 ease-in-out ml-2 text-sm ${
               isActive ? 'transform rotate-180' : 'transform-none'
             }`}
-          />{' '}
-          {/* Add the icon here */}
+          />
         </div>
         <ul
           ref={listRef}
@@ -90,14 +91,14 @@ export default function Dropdown(props) {
           className={`dropdown-content ${
             isActive ? 'block' : 'hidden'
           } absolute top-10 left-0 w-full  bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500`}>
-          {options.map((value) => (
+          {dropdownOptions.map((value) => (
             <li
               tabIndex={0}
               key={value.id}
               data-value={value.value}
               onClick={() => {
-                onChange(value.value); // Call the onChange prop with the selected value
-                setIsActive(false); // Close the dropdown
+                onChange(value.value);
+                setIsActive(false);
               }}
               className="focus:outline-none dark:focus:text-white transition-all duration-300 ease-in-out item px-4 py-3 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white dark:focus:bg-primary capitalize dark:hover:bg-primary dark:text-gray-900 dark:hover:text-white">
               {value.value}
@@ -110,13 +111,6 @@ export default function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      value: PropTypes.string.isRequired
-    })
-  ).isRequired,
-  label: PropTypes.string.isRequired,
   selectedOption: PropTypes.string.isRequired, // Pass the selected value as a prop
   onChange: PropTypes.func.isRequired // Pass the onChange event handler as a prop
 };

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { radioLabel, radioOptions } from '../const';
 
 export default function RadioGroup(props) {
-  const { label, onChange, selectedValue, options } = props;
+  const { onChange, selectedValue } = props;
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -12,10 +13,10 @@ export default function RadioGroup(props) {
   return (
     <div className="mt-12">
       <p className="capitalize mb-4 text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md">
-        {label}
+        {radioLabel}
       </p>
       <div className="flex  justify-between gap-5">
-        {options.map((option) => (
+        {radioOptions.map((option) => (
           <div className="w-[50%]" key={option.id}>
             <input
               type="radio"
@@ -42,14 +43,6 @@ export default function RadioGroup(props) {
   );
 }
 RadioGroup.propTypes = {
-  label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired // Added label prop
-    })
-  ).isRequired
+  selectedValue: PropTypes.string.isRequired
 };
