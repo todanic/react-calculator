@@ -4,10 +4,10 @@ import Form from '../components/Form';
 
 export default function DataEntry() {
   const frequencyValues = [
-    { id: 0, value: 'annually' },
-    { id: 1, value: 'weekly' },
+    { id: 0, value: 'weekly' },
+    { id: 1, value: 'fortnightly' },
     { id: 2, value: 'monthly' },
-    { id: 3, value: 'fortnightly' }
+    { id: 3, value: 'annually' }
   ];
   const calculationTypeValues = [
     { id: 0, value: 'gross', label: 'gross' },

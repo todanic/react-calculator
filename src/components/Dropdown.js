@@ -24,7 +24,7 @@ export default function Dropdown(props) {
   }, [isActive]);
 
   const handleClickOutside = (e) => {
-    if (!listRef.current?.contains(e.target)) {
+    if (!listRef.current.parentNode?.contains(e.target)) {
       setIsActive(false);
     }
   };
