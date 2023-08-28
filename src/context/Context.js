@@ -6,7 +6,6 @@ export const ContextProvider = ({ children }) => {
   const [income, setIncome] = useState(0);
   const [frequency, setFrequency] = useState('monthly');
   const [calculationType, setCalculationType] = useState('net');
-  const [darkMode, setDarkMode] = useState(false);
 
   return (
     <Context.Provider
@@ -16,9 +15,7 @@ export const ContextProvider = ({ children }) => {
         frequency,
         setFrequency,
         calculationType,
-        setCalculationType,
-        darkMode,
-        setDarkMode
+        setCalculationType
       }}>
       {children}
     </Context.Provider>
