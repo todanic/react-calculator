@@ -1,19 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import DataEntry from '../pages/DataEntry';
-import Results from '../pages/Results';
 import { ContextProvider } from '../context/Context';
+import routes from '../routes/routes';
 
 export default function Navigation() {
   return (
     <ContextProvider>
       <Switch>
-        <Route exact path="/">
-          <DataEntry />
-        </Route>
-        <Route path="/results">
-          <Results />
-        </Route>
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} exact={route.exact} component={route.component} />
+        ))}
       </Switch>
     </ContextProvider>
   );

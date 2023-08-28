@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "engines" : { 
-    "node" : ">=16.0.0" 
+  "engines": {
+    "node": ">=16.0.0"
   },
   "scripts": {
     "clean-build": "rimraf dist && mkdir dist && webpack --config webpack.prod.js",
     "start": "webpack serve --open --config webpack.dev.js",
-    "predeploy": "yarn clean-build",
-    "deploy": "gh-pages -d dist -r git@github.com:todanic/react-calculator.git",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"

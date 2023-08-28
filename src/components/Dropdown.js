@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FaArrowDown } from 'react-icons/fa';
 import { dropdownOptions, dropdownLabel } from '../const';
+import { handleKeyDown } from '../utils/keydownDropdown';
 
 export default function Dropdown(props) {
   const { selectedOption, onChange } = props;
@@ -11,11 +12,10 @@ export default function Dropdown(props) {
   useEffect(() => {
     // Effect to focus on the selected list item when the dropdown becomes active
     if (isActive) {
-      listRef.current?.querySelector(`li[data-value="${selectedOption}"]`).focus();
+      const selectedListItem = listRef.current?.querySelector(`li[data-value="${selectedOption}"]`);
+      selectedListItem?.focus();
+      document.addEventListener('mousedown', handleClickOutside);
     }
-    isActive
-      ? document.addEventListener('mousedown', handleClickOutside)
-      : document.removeEventListener('mousedown', handleClickOutside);
 
     //Removing the event listener when the component unmounts
     return () => {
@@ -28,35 +28,9 @@ export default function Dropdown(props) {
       setIsActive(false);
     }
   };
-  const handleKeyDown = (e) => {
-    // Toggle dropdown visibility on Enter or Space key press
-    if (e.key === 'Enter' || e.key === ' ') {
-      setIsActive(!isActive);
-    }
-    // Handle arrow key navigation within the dropdown
-    if (isActive && ['ArrowUp', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
-      const currentIndex = dropdownOptions.findIndex((option) => option.value === selectedOption);
 
-      const newIndex =
-        (currentIndex + (e.key === 'ArrowDown' ? 1 : -1) + dropdownOptions.length) %
-        dropdownOptions.length;
-
-      const newSelectedValue = dropdownOptions[newIndex].value;
-      onChange(newSelectedValue);
-
-      // Focus on the newly selected list item
-      const newSelectedItem = listRef.current?.querySelector(
-        `li[data-value="${newSelectedValue}"]`
-      );
-      if (newSelectedItem) {
-        newSelectedItem.focus();
-      }
-    }
-    if (e.key === 'Tab' && isActive) {
-      e.preventDefault();
-      setIsActive(false);
-    }
+  const onKeyDown = (e) => {
+    handleKeyDown(e, isActive, setIsActive, selectedOption, onChange, listRef, dropdownOptions);
   };
 
   return (
@@ -69,7 +43,7 @@ export default function Dropdown(props) {
       <div
         className="relative inline-block w-full text-gray-900 text-md rounded-lg"
         tabIndex={0}
-        onKeyDown={handleKeyDown}
+        onKeyDown={onKeyDown}
         aria-expanded={isActive}
         aria-labelledby={`dropdown-label-${dropdownLabel}`}>
         <div
