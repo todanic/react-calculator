@@ -4,6 +4,7 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
   mode: 'production',
   output: {
-    filename: '[name][fullhash].js'
+    filename: '[name][fullhash].js',
+    publicPath: './'
   }
 });
