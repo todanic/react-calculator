@@ -1,3 +1,4 @@
+// Function to handle keyboard interactions in a dropdown component
 export const handleKeyDown = (
   e,
   isActive,
@@ -11,6 +12,7 @@ export const handleKeyDown = (
 
   if (['Enter', ' '].includes(key)) {
     setIsActive((prev) => !prev);
+    // Navigate within dropdown options using ArrowUp or ArrowDown keys
   } else if (isActive && ['ArrowUp', 'ArrowDown'].includes(key)) {
     e.preventDefault();
     const currentIndex = dropdownOptions.findIndex((option) => option.value === selectedOption);

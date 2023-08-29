@@ -9,7 +9,8 @@ const routes = [
   },
   {
     path: '/results',
-    component: Results
+    component: Results,
+    showBackButton: true
   }
 ];
 

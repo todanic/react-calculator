@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-const Context = createContext('');
+const FormContext = createContext('');
 
-export const ContextProvider = ({ children }) => {
+export const FormContextProvider = ({ children }) => {
   const [income, setIncome] = useState(0);
   const [frequency, setFrequency] = useState('monthly');
   const [calculationType, setCalculationType] = useState('net');
 
   return (
-    <Context.Provider
+    <FormContext.Provider
       value={{
         income,
         setIncome,
@@ -18,13 +18,13 @@ export const ContextProvider = ({ children }) => {
         setCalculationType
       }}>
       {children}
-    </Context.Provider>
+    </FormContext.Provider>
   );
 };
 
-export const useSharedState = () => {
-  return useContext(Context);
+export const useFormSharedState = () => {
+  return useContext(FormContext);
 };
-ContextProvider.propTypes = {
+FormContextProvider.propTypes = {
   children: PropTypes.node.isRequired
 };

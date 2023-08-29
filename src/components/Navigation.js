@@ -1,16 +1,16 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { ContextProvider } from '../context/Context';
+import { FormContextProvider } from '../context/FormContext';
 import routes from '../routes/routes';
 
 export default function Navigation() {
   return (
-    <ContextProvider>
+    <FormContextProvider>
       <Switch>
         {routes.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} component={route.component} />
         ))}
       </Switch>
-    </ContextProvider>
+    </FormContextProvider>
   );
 }

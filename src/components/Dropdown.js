@@ -5,8 +5,9 @@ import { dropdownOptions, dropdownLabel } from '../const';
 import { handleKeyDown } from '../utils/keydownDropdown';
 
 export default function Dropdown(props) {
-  const { selectedOption, onChange } = props;
+  const { defaultOption } = props;
   const [isActive, setIsActive] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(defaultOption);
   const listRef = useRef(null);
 
   useEffect(() => {
@@ -33,13 +34,18 @@ export default function Dropdown(props) {
     handleKeyDown(e, isActive, setIsActive, selectedOption, onChange, listRef, dropdownOptions);
   };
 
+  const onChange = (value) => {
+    setSelectedOption(value);
+  };
+
   return (
     <div>
       <label
-        className="capitalize mb-5 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
+        className="capitalize sm:mb-5 mb-2 sm:mt-0 mt-6 block text-gray-900 dark:text-primary transition-all duration-300 ease-in-out font-bold tracking-2 text-md"
         htmlFor="frequency">
         {dropdownLabel}
       </label>
+      <input name="dropdown" hidden readOnly value={selectedOption} />
       <div
         className="relative inline-block w-full text-gray-900 text-md rounded-lg"
         tabIndex={0}
@@ -50,11 +56,11 @@ export default function Dropdown(props) {
           onClick={() => {
             setIsActive(!isActive);
           }}
-          className="capitalize shadow-elements bg-gray-50 border border-gray-400 p-3 rounded-lg cursor-pointer flex justify-between items-center h-10">
+          className="tracking-2 capitalize shadow-elements bg-gray-50 border border-gray-400 p-3 rounded-lg cursor-pointer flex justify-between items-center h-10">
           {selectedOption}
           <span className={isActive ? 'fas fa-caret-up' : 'fas fa-caret-down'} />
           <FaArrowDown
-            className={`transition-all duration-300 ease-in-out ml-2 text-sm ${
+            className={` transition-all duration-300 ease-in-out ml-2 text-sm ${
               isActive ? 'transform rotate-180' : 'transform-none'
             }`}
           />
@@ -64,7 +70,7 @@ export default function Dropdown(props) {
           tabIndex={0}
           className={`dropdown-content ${
             isActive ? 'block' : 'hidden'
-          } absolute top-10 left-0 w-full  bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500`}>
+          } absolute top-10 left-0 w-full  bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500 rounded-lg z-10 tracking-2`}>
           {dropdownOptions.map((value) => (
             <li
               tabIndex={0}
@@ -74,7 +80,7 @@ export default function Dropdown(props) {
                 onChange(value.value);
                 setIsActive(false);
               }}
-              className="focus:outline-none dark:focus:text-white transition-all duration-300 ease-in-out item px-4 py-3 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white dark:focus:bg-primary capitalize dark:hover:bg-primary dark:text-gray-900 dark:hover:text-white">
+              className="focus:outline-none dark:focus:text-white transition-all duration-300 ease-in-out item px-4 py-4 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white dark:focus:bg-primary capitalize dark:hover:bg-primary dark:text-gray-900 dark:hover:text-white">
               {value.value}
             </li>
           ))}
@@ -85,6 +91,5 @@ export default function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
-  selectedOption: PropTypes.string.isRequired, // Pass the selected value as a prop
-  onChange: PropTypes.func.isRequired // Pass the onChange event handler as a prop
+  defaultOption: PropTypes.string.isRequired // Pass the selected value as a prop
 };
