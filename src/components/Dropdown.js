@@ -95,5 +95,5 @@ export default function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
-  defaultOption: PropTypes.string.isRequired // Pass the selected value as a prop
+  defaultOption: PropTypes.string.isRequired
 };

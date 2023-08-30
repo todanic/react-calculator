@@ -1,7 +1,7 @@
 import Header from '../components/Header';
+import PropTypes from 'prop-types';
 import React from 'react';
 
-// eslint-disable-next-line react/prop-types
 const Layout = ({ children }) => {
   return (
     <>
@@ -13,6 +13,9 @@ const Layout = ({ children }) => {
       </div>
     </>
   );
+};
+Layout.propTypes = {
+  children: PropTypes.node.isRequired // PropTypes.node is used for any kind of children elements
 };
 
 export default Layout;

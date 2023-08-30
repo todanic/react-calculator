@@ -20,7 +20,7 @@ const ThemeSwitcher = () => {
       onClick={toggleTheme}>
       <input
         type="checkbox"
-        aria-label="dark mode toggle"
+        aria-label="Toggle Dark Mode"
         onChange={toggleTheme}
         checked={theme === 'dark'}
         className="peer/theme hidden invisible absolute"
