@@ -51,8 +51,10 @@ export default function Dropdown(props) {
         className="relative inline-block w-full text-gray-900 text-md rounded-lg">
         <div
           tabIndex={0}
+          role="button"
           aria-expanded={isActive}
-          aria-label={`dropdown-label-${dropdownLabel}`}
+          aria-label={`dropdown-label-${dropdownLabel} ${selectedOption}`}
+          aria-haspopup="true"
           onClick={() => {
             setIsActive(!isActive);
           }}
