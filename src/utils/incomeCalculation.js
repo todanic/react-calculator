@@ -6,6 +6,13 @@ export const getSelectedRow = (frequency) => rows.find((row) => row.frequencyNam
 
 // Function to calculate and update rows based on given inputs
 export const calculateRows = (calculationType, income, frequency) => {
+  const isGross = getIsGross(calculationType);
+  const selectedRow = getSelectedRow(frequency);
+  const incomeNumber = parseInt(income);
+
+  selectedRow.gross = isGross ? incomeNumber : selectedRow.net + selectedRow.tax;
+  selectedRow.net = isGross ? selectedRow.gross - selectedRow.tax : incomeNumber;
+
   const updatedRows = [...rows];
 
   if (!income) {
@@ -15,13 +22,6 @@ export const calculateRows = (calculationType, income, frequency) => {
     });
     return updatedRows;
   }
-
-  const isGross = getIsGross(calculationType);
-  const selectedRow = getSelectedRow(frequency);
-  const incomeNumber = parseInt(income);
-
-  selectedRow.gross = isGross ? incomeNumber : selectedRow.net + selectedRow.tax;
-  selectedRow.net = isGross ? selectedRow.gross - selectedRow.tax : incomeNumber;
 
   // Loop through rows to update net and gross values
   updatedRows.forEach((currentRow, i) => {

@@ -14,7 +14,7 @@ export default function Results() {
     <Layout>
       <h2 className="dark:text-white text-gray-900 text-center font-bold">
         <span className="text-primary text-2xl underline mr-2">
-          {isGross ? selectedRow.net : selectedRow.net}
+          {isGross ? selectedRow.net : selectedRow.gross}
         </span>
         {isGross ? 'net' : 'gross'} {frequency} income
       </h2>
