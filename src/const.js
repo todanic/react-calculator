@@ -17,19 +17,13 @@ export const columns = [
 ];
 
 export const rows = [
-  { id: 0, frequencyName: 'weekly', tax: 1000, gross: 0, net: 0 },
-  { id: 1, frequencyName: 'fortnightly', tax: 2000, gross: 0, net: 0 },
-  { id: 2, frequencyName: 'monthly', tax: 4000, gross: 0, net: 0 },
-  { id: 3, frequencyName: 'annually', tax: 48000, gross: 0, net: 0 }
+  { id: 0, frequencyName: 'weekly', frequencyValue: 2, tax: 1000, gross: 0, net: 0 },
+  { id: 1, frequencyName: 'fortnightly', frequencyValue: 2, tax: 2000, gross: 0, net: 0 },
+  { id: 2, frequencyName: 'monthly', frequencyValue: 2, tax: 4000, gross: 0, net: 0 },
+  { id: 3, frequencyName: 'annually', frequencyValue: 12, tax: 48000, gross: 0, net: 0 }
 ];
-
-export const multiplierMap = {
-  weekly: 2,
-  fortnightly: 2,
-  monthly: 2,
-  annually: 12
-};
 
 export const radioLabel = 'income type:';
 export const inputLabel = 'income:';
 export const dropdownLabel = 'periodic pay:';
+export const submitLabel = 'calculate';

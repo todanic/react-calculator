@@ -1,10 +1,11 @@
 import React from 'react';
 import { useFormSharedState } from '../context/FormContext';
 import { useHistory } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
+import { submitLabel } from '../const';
 import Dropdown from './Dropdown';
 import Input from './Input';
 import RadioGroup from './RadioGroup';
-import { FaArrowRight } from 'react-icons/fa';
 
 export default function Form() {
   const { push } = useHistory();
@@ -39,7 +40,7 @@ export default function Form() {
         <button
           type="submit"
           className="group relative flex items-center justify-center shadow-light w-full mt-12 text-lg transition-all duration-300 ease-in-out uppercase tracking-2 dark:hover:bg-white  bg-gradient-to-t  from-gray-900 to-gray-700 dark:from-red-600 dark:to-hover dark:bg-primary text-white py-3 px-4 rounded-lg hover:bg-hover">
-          Calculate
+          {submitLabel}
           <FaArrowRight
             className="ml-10 group-hover:ml-14 before:content-normal transition-all duration-300 ease-in-out"
             style={{}}

@@ -47,12 +47,12 @@ export default function Dropdown(props) {
       </label>
       <input name="dropdown" hidden readOnly value={selectedOption} />
       <div
-        className="relative inline-block w-full text-gray-900 text-md rounded-lg"
-        tabIndex={0}
         onKeyDown={onKeyDown}
-        aria-expanded={isActive}
-        aria-labelledby={`dropdown-label-${dropdownLabel}`}>
+        className="relative inline-block w-full text-gray-900 text-md rounded-lg">
         <div
+          tabIndex={0}
+          aria-expanded={isActive}
+          aria-label={`dropdown-label-${dropdownLabel}`}
           onClick={() => {
             setIsActive(!isActive);
           }}
@@ -70,8 +70,8 @@ export default function Dropdown(props) {
           tabIndex={0}
           className={`dropdown-content ${
             isActive ? 'block' : 'hidden'
-          } absolute top-10 left-0 w-full  bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500 rounded-lg z-10 tracking-2`}>
-          {dropdownOptions.map((value) => (
+          } absolute top-10 left-0 w-full  bg-gray-900 border-b rounded-b-lg dark:bg-white focus:bg-pink-500 rounded-lg z-10 tracking-2 border-l border-r`}>
+          {dropdownOptions.map((value, index) => (
             <li
               tabIndex={0}
               key={value.id}
@@ -80,7 +80,9 @@ export default function Dropdown(props) {
                 onChange(value.value);
                 setIsActive(false);
               }}
-              className="focus:outline-none dark:focus:text-white transition-all duration-300 ease-in-out item px-4 py-4 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white dark:focus:bg-primary capitalize dark:hover:bg-primary dark:text-gray-900 dark:hover:text-white">
+              className={`focus:outline-none dark:focus:text-white transition-all duration-300 ease-in-out item px-4 py-4 cursor-pointer hover:bg-white text-white hover:text-gray-900 focus:text-gray-900 focus:bg-white  dark:focus:bg-primary dark:focus:from-red-600 dark:focus:to-hover capitalize bg-gradient-to-t dark:hover:bg-primary   dark:hover:from-red-600 dark:hover:to-hover dark:text-gray-900 dark:hover:text-white ${
+                index === 0 ? 'rounded-tl-lg rounded-tr-lg' : ''
+              } ${index === dropdownOptions.length - 1 ? 'rounded-bl-lg rounded-br-lg' : ''}`}>
               {value.value}
             </li>
           ))}

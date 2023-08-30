@@ -6,9 +6,9 @@ import { calculateRows, getIsGross, getSelectedRow } from '../utils/incomeCalcul
 
 export default function Results() {
   const { income, frequency, calculationType } = useFormSharedState();
-  const rows = calculateRows(calculationType, income, frequency);
   const isGross = getIsGross(calculationType);
   const selectedRow = getSelectedRow(frequency);
+  const rows = calculateRows(calculationType, income, frequency);
 
   return (
     <Layout>
@@ -23,7 +23,7 @@ export default function Results() {
           <tr>
             {columns.map((column) => (
               <th
-                className="capitalize p-6 text-gray-900 dark:text-primary dark:bg-gray-900 font-bold tracking-2 text-lg"
+                className="capitalize p-6 text-white bg-gradient-to-t  from-red-600 to-hover bg-primary font-bold tracking-2 text-lg"
                 key={column.id}>
                 {column.name}
               </th>
@@ -35,8 +35,8 @@ export default function Results() {
             return (
               <tr
                 key={row.id}
-                className="tracking-2 odd:bg-gray-900 dark:odd:bg-white dark:odd:text-gray-900  odd:text-white dark:text-white capitalize">
-                <td className="p-6 dark:text-primary font-bold">{row.frequencyName}</td>
+                className="tracking-2 odd:bg-gray-900 even:bg-white dark:even:text-gray-900  odd:text-white dark:text-white capitalize">
+                <td className="p-6  font-bold">{row.frequencyName}</td>
                 <td className="p-6">{row.gross}</td>
                 <td className="p-6">{row.tax}</td>
                 <td className="p-6">{row.net}</td>

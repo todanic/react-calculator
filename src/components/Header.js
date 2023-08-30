@@ -21,6 +21,7 @@ const Header = () => {
       <nav className="flex items-center justify-end">
         {shouldShowBackButton && (
           <button
+            aria-label="back-button"
             className="text-gray-900 absolute left-6 transition-all duration-300 ease-in-out bg-transparent dark:text-primary font-bold py-2 px-4 rounded-xl text-2xl hover:left-2"
             onClick={handleBackButtonClick}>
             <FaArrowLeft />

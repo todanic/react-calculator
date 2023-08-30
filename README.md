@@ -11,10 +11,10 @@ To run this project, ensure you have [Node.js](https://nodejs.org/) and [Yarn](h
 1. Clone this repository to your local machine.
 2. Navigate to the project directory using the command line.
 3. Run the following command to install project dependencies:
-   yarn install
+   `yarn install`
 
 4. Start the development server by running:
-   yarn start
+   `yarn start`
 
 This will launch the project in development mode.
 
@@ -23,7 +23,7 @@ This will launch the project in development mode.
 To create a production build of the project, follow these steps:
 
 1. Run the following command to clean the build directory:
-   yarn clean-build
+   `yarn build`
 
 2. Once the build process is complete, the production-ready files will be available in the `dist` directory.
 
