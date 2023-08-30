@@ -5,12 +5,14 @@ const routes = [
   {
     path: '/',
     component: DataEntry,
-    exact: true
+    exact: true,
+    pageTitle: 'Home'
   },
   {
     path: '/results',
     component: Results,
-    showBackButton: true
+    showBackButton: true,
+    pageTitle: 'Results'
   }
 ];
 
