@@ -11,12 +11,12 @@ export default function Navigation() {
         {routes.map((route, index) => {
           const Component = route.component;
           const { path, exact, pageTitle } = route;
-
+          const canonicalUrl = `${window.location.origin}${path}`;
           return (
             <Route key={index} path={path} exact={exact}>
               <Helmet>
                 <title>{pageTitle}</title>
-                <link rel="canonical" href={path} />
+                <link rel="canonical" href={canonicalUrl} />
               </Helmet>
               <Component />
             </Route>
